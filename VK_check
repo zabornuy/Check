@@ -1,0 +1,18 @@
+import vk_api
+
+# Авторизация
+vk_session = vk_api.VkApi('ваш_логин', 'ваш_пароль')
+vk_session.auth()
+
+# Получение объекта API
+vk = vk_session.get_api()
+
+# ID пользователя, подписчиков которого нужно проверить
+user_id = 'user_id'
+
+# Получение списка подписчиков
+followers = vk.users.getFollowers(user_id=user_id)
+
+# Количество подписчиков
+count = followers['count']
+print(f'Количество подписчиков: {count}')
